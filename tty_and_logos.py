@@ -92,6 +92,11 @@ def sleep_display():
         tft_bl.value(0)
         display_asleep = True
 
+def load_default():
+    try:
+        display_logo("logos/mister.png")
+    except:
+        print("Error loading default, mister.png")        
 
 def read_from_input():
     while True:
@@ -109,9 +114,10 @@ def read_from_input():
             display_logo(clean_input)
         except OSError:
             print("no logo!")
+            load_default()
         except MemoryError:
             print("logo too big!")
-
+            load_default()
 
 # display_logo("mister")
 # read_from_input()
